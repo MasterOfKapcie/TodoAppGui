@@ -1,0 +1,18 @@
+<body style="background: darkseagreen">
+<div style="text-align: center; width: 40%; margin-left: 30%; min-height: 100%">
+  <h2>Lista zadań</h2>
+  <mat-expansion-panel *ngFor="let item of items" style="margin-bottom: 10px; background-color: rgb(224, 211, 211)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>{{item.cardCategory}}</b>
+      </mat-panel-title>
+      <mat-panel-description>
+        Termin: {{item.eventCardDateTime}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{item.cardDescription}}</p>
+    <button mat-raised-button color="warn" (click)="deleteTask(item.id)">Usuń</button>
+  </mat-expansion-panel>
+
+</div>
+</body>

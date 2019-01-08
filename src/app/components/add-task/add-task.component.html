@@ -1,0 +1,39 @@
+<body style="text-align: center" style="background: darkseagreen">
+
+  <div style="width: 40%; 
+          position: absolute; left: 30%; text-align: center;">
+          <h2>Dodaj zadanie</h2>
+      <form style="text-align: center">
+
+          <div class="form-group" style="width: 50%; margin-left: 25%; margin-top: 20px">
+              <input id="name" name="name" type="text" placeholder="Kategoria" class="form-control"
+               maxlength="25" [(ngModel)]="name" required minlength="3" #nameInput="ngModel" (keyup)="onCategory($event)" (mouseup)="onCategory($event)">
+               <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">
+                      Kategoria nie może być krótsza niż 3 znaki.
+                    </div>
+          </div>
+
+          <div class="form-group" style="width: 90%; margin-left: 5%">
+              <textarea class="form-control" id="description" name="description" placeholder="Opis zadania"
+                  rows="4" maxlength="300" [(ngModel)]="description" 
+                  required #descriptionInput="ngModel" (keyup)="onDescription($event)" (mouseup)="onDescription($event)"></textarea>
+                  <div class="help is-error" *ngIf="descriptionInput.invalid">
+                          Opis zadania nie może być pusty!
+                          </div>
+          </div>
+
+            <div class="form-group" style="width: 90%; margin-left: 5%">
+                Data i godzina:
+                <input matInput type="date" [matDatepicker]="od" [min]="today" placeholder="Data" [(ngModel)]="model" name="something" (dateChange)="onDate(model)">
+                <input type="time" [(ngModel)]="modell" name="something" (keyup)="onHour($event)">
+            </div>
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-success btn-lg" *ngIf="category&&description&&date&&hour" (click)="addTask()">Dodaj</button>
+          </div>
+      </form>
+  </div>
+
+</body>
+
+ 
