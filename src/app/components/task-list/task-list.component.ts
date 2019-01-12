@@ -38,6 +38,18 @@ export class TaskListComponent implements OnInit {
       );
   }
 
+  finishTask(id: string): void {
+    this.httpClient.delete(`http://localhost:8080/api/card/`+id+`/set-finished`)
+      .subscribe(
+        (data: any) => {
+          this.getTasks();
+        },
+        err => {
+          alert("Nie udało się oznaczyć zadania jako ukończone");
+        }
+      );
+  }
+
   ngOnInit() {
     this.getTasks();
   }

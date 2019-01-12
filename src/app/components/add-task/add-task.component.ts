@@ -45,7 +45,7 @@ export class AddTaskComponent implements OnInit {
           alert("Zadanie zostało dodane!");
         },
         err => {
-          alert(err+"Nie udało się dodać zadania");
+          alert("Nie udało się dodać zadania");
         }
       )
   }

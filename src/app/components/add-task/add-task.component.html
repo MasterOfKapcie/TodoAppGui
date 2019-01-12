@@ -22,11 +22,15 @@
                           </div>
           </div>
 
-            <div class="form-group" style="width: 90%; margin-left: 5%">
-                Data i godzina:
-                <input matInput type="date" [matDatepicker]="od" [min]="today" placeholder="Data" [(ngModel)]="model" name="something" (dateChange)="onDate(model)">
-                <input type="time" [(ngModel)]="modell" name="something" (keyup)="onHour($event)">
-            </div>
+          Data i godzina:
+          <div class="form-group" style="width: 90%; margin-left: 5%">
+              <mat-form-field>
+                  <input matInput readonly [matDatepicker]="picker" [min]="today" placeholder="Wybierz datę" [(ngModel)]="model" name="something" (dateChange)="onDate(model)">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              <input type="time" [(ngModel)]="modell" name="something" (keyup)="onHour($event)">
+          </div>
 
           <div class="form-group">
               <button type="submit" class="btn btn-success btn-lg" *ngIf="category&&description&&date&&hour" (click)="addTask()">Dodaj</button>

@@ -4,7 +4,7 @@
   <mat-expansion-panel *ngFor="let item of items" style="margin-bottom: 10px; background-color: rgb(224, 211, 211)">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <b>{{item.cardCategory}}</b>
+        <b>{{item.cardCategory}}{{item.finished ? "(Zakończone)" : ""}}</b>
       </mat-panel-title>
       <mat-panel-description>
         Termin: {{item.eventCardDateTime}}
@@ -12,6 +12,7 @@
     </mat-expansion-panel-header>
     <p>{{item.cardDescription}}</p>
     <button mat-raised-button color="warn" (click)="deleteTask(item.id)">Usuń</button>
+    <button mat-raised-button color="primary" *ngIf="!item.finished" (click)="finishTask(item.id); getTasks()">Zakończ</button>
   </mat-expansion-panel>
 
 </div>
