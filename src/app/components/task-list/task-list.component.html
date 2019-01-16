@@ -13,6 +13,16 @@
     <p>{{item.cardDescription}}</p>
     <button mat-raised-button color="warn" (click)="deleteTask(item.id)">Usuń</button>
     <button mat-raised-button color="primary" *ngIf="!item.finished" (click)="finishTask(item.id); getTasks()">Zakończ</button>
+
+    <div class="form-group" *ngIf="!item.finished" style="width: 50%; margin-left: 25%; margin-top: 10px">
+      <input id="email" name="email" type="email" placeholder="Twój email" class="form-control"
+      [(ngModel)]="email" required email #emailInput="ngModel" (keyup)="onMail($event)">
+      <div class="help is-error" *ngIf="emailInput.invalid">
+              Podaj proszę prawidłowy adres email.
+      </div>
+    <button mat-raised-button color="accent" style="margin-top: 10px" *ngIf="!item.finished && !emailInput.invalid" 
+    (click)="sendMail(item)">Wyślij alert!</button>
+    </div>
   </mat-expansion-panel>
 
 </div>
